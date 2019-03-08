@@ -22,14 +22,25 @@ public:
         for (int i = 0; i < label_name_vector.size(); ++i) {
             if (label_name_vector[i] == label) {
                 label_vector[i] = data;
-                break;
+                return;
             }
         }
+        label_name_vector.push_back(label);
+        label_vector.push_back(data);
     }
 
     void AddLabel(const std::string &label) {
         label_name_vector.push_back(label);
         label_vector.emplace_back();
+    }
+
+    int GetLabel(const std::string &label) {
+        for (int i = 0; i < label_name_vector.size(); ++i) {
+            if (label_name_vector[i] == label) {
+                return label_vector[i];
+            }
+        }
+        return 0;
     }
 
 
