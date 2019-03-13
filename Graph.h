@@ -35,6 +35,13 @@ public:
      */
     void AddEdge(int from, int to, int weight);
 
+    /**
+     * Adds an edge (directed or not) between two nodes.
+     * @param from the starting node
+     * @param to the ending node
+     * @param weight the weight of the edge
+     * @param directed whether or not the edge is directed
+     */
     void AddEdge(int from, int to, int weight, bool directed);
 
     /**
@@ -46,10 +53,31 @@ public:
 
     /**
      * Returns all nodes with a direct edge from the node.
-     * @param data the node index.
-     * @return a vector of nodes adjacent.
+     * @param data the node index
+     * @return a vector of nodes adjacent
      */
     std::vector<Edge> Neighbours(int data);
+
+    /**
+     * Returns a vector of all the edges.
+     * @return a vector of all edges, an edge is of the form (from, to, weight)
+     */
+    std::vector<std::tuple<int, int, int>> GetEdges();
+
+    /**
+     * Returns a vector of all the nodes.
+     * @return a vector of all the nodes
+     */
+    std::vector<Node> get_node_vector() {
+        return node_vector;
+    }
+
+    /**
+     * Returns a vector of the data of all the nodes.
+     * @return a vector of all the nodes' data
+     */
+     std::vector<int> GetNodesData();
+
 
     void Debug() {
         for (auto i : edge_vector_vector) {

@@ -61,3 +61,24 @@ std::vector<Edge> Graph::Neighbours(int data) {
     }
     return std::vector<Edge>();
 }
+
+std::vector<std::tuple<int, int, int>> Graph::GetEdges() {
+    std::vector<std::tuple<int, int, int>> return_vector;
+    for (auto edge_vector : edge_vector_vector) {
+        for (auto edge : std::get<1>(edge_vector)) {
+            return_vector.emplace_back();
+            std::get<0>(return_vector[return_vector.size() - 1]) = std::get<0>(edge_vector);
+            std::get<1>(return_vector[return_vector.size() - 1]) = edge.to;
+            std::get<2>(return_vector[return_vector.size() - 1]) = edge.weight;
+        }
+    }
+    return return_vector;
+}
+
+std::vector<int> Graph::GetNodesData() {
+    std::vector<int> return_vector;
+    for (auto node : node_vector) {
+        return_vector.push_back(node.get_data());
+    }
+    return return_vector;
+}
