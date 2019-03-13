@@ -1,3 +1,5 @@
+#include <utility>
+
 //
 // Created by Ben Napier on 13/03/2019.
 //
@@ -52,6 +54,18 @@ void Graph::AddEdgesFrom(std::vector<std::tuple<int, int, int>> edge_vector) {
     }
 }
 
+
+void Graph::AddEdgesToNode(int from, std::vector<std::tuple<int, int>> p_edge_vector, bool directed) {
+    for (auto p_edge : p_edge_vector) {
+        AddEdge(from, std::get<0>(p_edge), std::get<1>(p_edge), directed);
+    }
+}
+
+
+void Graph::AddEdgesToNode(int from, std::vector<std::tuple<int, int>> p_edge_vector) {
+    AddEdgesToNode(from, std::move(p_edge_vector), true);
+}
+
 void Graph::AddNode(int data) {
     if (data < 0) return;
     for (auto &node : node_vector) {
@@ -100,5 +114,3 @@ std::vector<int> Graph::GetNodesData() {
     }
     return return_vector;
 }
-
-

@@ -4,6 +4,7 @@
 
 #ifndef CGRAPH_GRAPH_H
 #define CGRAPH_GRAPH_H
+
 #include <vector>
 #include <tuple>
 #include <iostream>
@@ -25,6 +26,7 @@ private:
     std::vector<std::tuple<int, std::vector<Edge>>> edge_vector_vector;
 
     void AddDirectedEdge(int from, int to, int weight);
+
 public:
     /**
      * Adds an edge (directed or not) between two nodes.
@@ -46,14 +48,30 @@ public:
 
     /**
      * Adds an edge (directed or not) from a vector of tuples, parameters ordered the same as above.
+     * @param edge_vector vector of edges
+     * @param directed whether or not the edges are directed
      */
     void AddEdgesFrom(std::vector<std::tuple<int, int, int>> edge_vector, bool directed);
 
     /**
      * Adds a directed edge from a vector of tuples, parameters ordered the same as above.
-     * @param vector of edges
+     * @param edge_vector vector of edges
      */
     void AddEdgesFrom(std::vector<std::tuple<int, int, int>> edge_vector);
+
+    /**
+     * Adds a vector of edges (directed or not) to a single node.
+     * @param p_edge_vector vector of a tuple being (to, weight)
+     * @param directed whether or not the edges are directed
+     */
+    void AddEdgesToNode(int from, std::vector<std::tuple<int, int>> p_edge_vector, bool directed);
+
+    /**
+     * Adds a vector of edges to a single node.
+     * @param from node from which the edges come from
+     * @param p_edge_vector vector of a tuple being (to, weight)
+     */
+    void AddEdgesToNode(int from, std::vector<std::tuple<int, int>> p_edge_vector);
 
     /**
      * Adds a node.
@@ -93,14 +111,14 @@ public:
      * Returns a vector of the data of all the nodes.
      * @return a vector of all the nodes' data
      */
-     std::vector<int> GetNodesData();
+    std::vector<int> GetNodesData();
 
 
     void Debug() {
         for (auto i : edge_vector_vector) {
             std::cout << std::get<0>(i) << ": ";
             for (auto j : std::get<1>(i)) {
-                std::cout << j.to << " (" << j.weight << ")" << ",";
+                std::cout << j.to << " (" << j.weight << ")" << ", ";
             }
             std::cout << std::endl;
         }
