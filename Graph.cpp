@@ -40,6 +40,18 @@ void Graph::AddEdge(int from, int to, int weight) {
     AddEdge(from, to, weight, true);
 }
 
+void Graph::AddEdgeFrom(std::vector<std::tuple<int, int, int>> edge_vector, bool directed) {
+    for (auto edge : edge_vector) {
+        AddEdge(std::get<0>(edge), std::get<1>(edge), std::get<2>(edge), directed);
+    }
+}
+
+void Graph::AddEdgeFrom(std::vector<std::tuple<int, int, int>> edge_vector) {
+    for (auto edge : edge_vector) {
+        AddEdge(std::get<0>(edge), std::get<1>(edge), std::get<2>(edge));
+    }
+}
+
 void Graph::AddNode(int data) {
     if (data < 0) return;
     for (auto &node : node_vector) {
@@ -51,6 +63,12 @@ void Graph::AddNode(int data) {
     node_vector.emplace_back(Node(data));
     edge_vector_vector.emplace_back();
     std::get<0>(edge_vector_vector[edge_vector_vector.size() - 1]) = data;
+}
+
+void Graph::AddNodeFrom(std::vector<int> data_vector) {
+    for (auto data : data_vector) {
+        AddNode(data);
+    }
 }
 
 std::vector<Edge> Graph::Neighbours(int data) {
@@ -82,3 +100,5 @@ std::vector<int> Graph::GetNodesData() {
     }
     return return_vector;
 }
+
+

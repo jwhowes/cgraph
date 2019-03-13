@@ -27,15 +27,6 @@ private:
     void AddDirectedEdge(int from, int to, int weight);
 public:
     /**
-     * Adds an edge between two nodes.
-     * Will overwrite existing edges.
-     * @param from the starting node
-     * @param to the ending node
-     * @param weight the weight of the edge
-     */
-    void AddEdge(int from, int to, int weight);
-
-    /**
      * Adds an edge (directed or not) between two nodes.
      * @param from the starting node
      * @param to the ending node
@@ -45,11 +36,37 @@ public:
     void AddEdge(int from, int to, int weight, bool directed);
 
     /**
+     * Adds a directed edge between two nodes.
+     * Will overwrite existing edges.
+     * @param from the starting node
+     * @param to the ending node
+     * @param weight the weight of the edge
+     */
+    void AddEdge(int from, int to, int weight);
+
+    /**
+     * Adds an edge (directed or not) from a vector of tuples, parameters ordered the same as above.
+     */
+    void AddEdgeFrom(std::vector<std::tuple<int, int, int>> edge_vector, bool directed);
+
+    /**
+     * Adds a directed edge from a vector of tuples, parameters ordered the same as above.
+     * @param vector of edges
+     */
+    void AddEdgeFrom(std::vector<std::tuple<int, int, int>> edge_vector);
+
+    /**
      * Adds a node.
      * Will overwrite a nodes labels (not edges) if a node with the same data already exists.
      * @param data the data of the node (>= 0)
      */
     void AddNode(int data);
+
+    /**
+     * Adds a list of nodes.
+     * @param data_vector list of data of the nodes
+     */
+    void AddNodeFrom(std::vector<int> data_vector);
 
     /**
      * Returns all nodes with a direct edge from the node.
