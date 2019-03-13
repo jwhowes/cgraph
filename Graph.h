@@ -47,13 +47,13 @@ public:
     /**
      * Adds an edge (directed or not) from a vector of tuples, parameters ordered the same as above.
      */
-    void AddEdgeFrom(std::vector<std::tuple<int, int, int>> edge_vector, bool directed);
+    void AddEdgesFrom(std::vector<std::tuple<int, int, int>> edge_vector, bool directed);
 
     /**
      * Adds a directed edge from a vector of tuples, parameters ordered the same as above.
      * @param vector of edges
      */
-    void AddEdgeFrom(std::vector<std::tuple<int, int, int>> edge_vector);
+    void AddEdgesFrom(std::vector<std::tuple<int, int, int>> edge_vector);
 
     /**
      * Adds a node.

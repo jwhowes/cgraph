@@ -40,13 +40,13 @@ void Graph::AddEdge(int from, int to, int weight) {
     AddEdge(from, to, weight, true);
 }
 
-void Graph::AddEdgeFrom(std::vector<std::tuple<int, int, int>> edge_vector, bool directed) {
+void Graph::AddEdgesFrom(std::vector<std::tuple<int, int, int>> edge_vector, bool directed) {
     for (auto edge : edge_vector) {
         AddEdge(std::get<0>(edge), std::get<1>(edge), std::get<2>(edge), directed);
     }
 }
 
-void Graph::AddEdgeFrom(std::vector<std::tuple<int, int, int>> edge_vector) {
+void Graph::AddEdgesFrom(std::vector<std::tuple<int, int, int>> edge_vector) {
     for (auto edge : edge_vector) {
         AddEdge(std::get<0>(edge), std::get<1>(edge), std::get<2>(edge));
     }
