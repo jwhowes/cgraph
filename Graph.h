@@ -23,6 +23,8 @@ class Graph {
 private:
     std::vector<Node> node_vector;
     std::vector<std::tuple<int, std::vector<Edge>>> edge_vector_vector;
+
+    void AddDirectedEdge(int from, int to, int weight);
 public:
     /**
      * Adds an edge between two nodes.
@@ -32,6 +34,8 @@ public:
      * @param weight the weight of the edge
      */
     void AddEdge(int from, int to, int weight);
+
+    void AddEdge(int from, int to, int weight, bool directed);
 
     /**
      * Adds a node.

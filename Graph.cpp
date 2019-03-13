@@ -4,7 +4,7 @@
 
 #include "Graph.h"
 
-void Graph::AddEdge(int from, int to, int weight) {
+void Graph::AddDirectedEdge(int from, int to, int weight) {
     if (from == to) return;
     bool exists = false;
     for (auto &node : node_vector) {
@@ -28,6 +28,16 @@ void Graph::AddEdge(int from, int to, int weight) {
         }
     }
     std::cerr << "cgraph: One of the nodes entered does not exist.";
+}
+
+void Graph::AddEdge(int from, int to, int weight, bool directed) {
+    AddDirectedEdge(from, to, weight);
+    if (directed) return;
+    AddDirectedEdge(to, from, weight);
+}
+
+void Graph::AddEdge(int from, int to, int weight) {
+    AddEdge(from, to, weight, true);
 }
 
 void Graph::AddNode(int data) {
