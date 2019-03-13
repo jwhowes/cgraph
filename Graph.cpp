@@ -65,7 +65,7 @@ void Graph::AddNode(int data) {
     std::get<0>(edge_vector_vector[edge_vector_vector.size() - 1]) = data;
 }
 
-void Graph::AddNodeFrom(std::vector<int> data_vector) {
+void Graph::AddNodesFrom(std::vector<int> data_vector) {
     for (auto data : data_vector) {
         AddNode(data);
     }

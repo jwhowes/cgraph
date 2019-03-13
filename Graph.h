@@ -66,7 +66,7 @@ public:
      * Adds a list of nodes.
      * @param data_vector list of data of the nodes
      */
-    void AddNodeFrom(std::vector<int> data_vector);
+    void AddNodesFrom(std::vector<int> data_vector);
 
     /**
      * Returns all nodes with a direct edge from the node.
